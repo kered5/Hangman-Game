@@ -1,12 +1,12 @@
 (function () {
-    
+    // Initialize Variables
     var guess; 
     var letters;
-    var availableLetters = "abcdefghijklmnopqrstuvwxyz"
+    var alphabet = "abcdefghijklmnopqrstuvwxyz"
     var lives = 7;
     var names = ["mary", "chris", "scott", "amit", "matt", "tate"]
-    var output = document.getElementById("output");
-    var life = document.getElementById("life");
+    var output;
+    var life;
     var guessInput ;
     var lettersGuessed ;
     var lettersMatched ;
@@ -14,6 +14,7 @@
     var currentWord ;
     var guessButton ;
     var letter ;
+    var lettersToShow;
 
         /* Start game */
     window.onload = setup();
@@ -41,10 +42,14 @@
 
         
         guessInput = document.getElementById("letter");
+        output = document.getElementById("output");
+        life = document.getElementById("life");
 
 
         life.innerHTML = "You have " + lives + " lives remaining";
+        already.innerHTML = "You guessed : " + lettersMatched.toUpperCase() + lettersGuessed.toUpperCase();
         output.innerHTML = "";
+
 
         //document.getElementById("letter").value = "";
 
@@ -57,11 +62,11 @@
 
         /* set up display of letters in current word */
         letters = document.getElementById("letters");
-        letters.innerHTML = '<li class="current-word">Current word:</li>';
+        letters.innerHTML = '<a class="current-word">Who is this classmate?:</a><br>';
 
    
         for (i = 0; i < currentWord.length; i++) {
-            letter = '<li class="letter letter' + currentWord.charAt(i).toUpperCase() + '">' + currentWord.charAt(i).toUpperCase() + '</li>';
+            letter = '<a class="letter letter' + currentWord.charAt(i).toUpperCase() + '">' + currentWord.charAt(i).toUpperCase() + '</a>';
             letters.insertAdjacentHTML('beforeend', letter);
         }
     }
@@ -101,10 +106,13 @@
        console.log (lettersMatched);
        console.log (life);
 
+
         /* does guess have a value? if yes continue, if no, error */
         if (guess) {
             /* is guess a valid letter? if so carry on, else error */
-            if (availableLetters.indexOf(guess) > -1) {
+
+            if (alphabet.indexOf(guess) > -1) {
+
                 /* has it been guessed (missed or matched) already? if so, abandon & add notice */
                 if ((lettersMatched && lettersMatched.indexOf(guess) > -1) || (lettersGuessed && lettersGuessed.indexOf(guess) > -1)) {
                     output.innerHTML = '"' + guess.toUpperCase() + '"' + "Already guessed, try again!";
@@ -112,15 +120,17 @@
                 }
                 /* does guess exist in current word? if so, add to letters already matched, if final letter added, game over with win message */
                 else if (currentWord.indexOf(guess) > -1) {
-                    var lettersToShow;
+
+                    
                     lettersToShow = document.querySelectorAll(".letter" + guess.toUpperCase());
 
-                    for (var i = 0; i < lettersToShow.length; i++) {
+
+                    for ( i = 0; i < lettersToShow.length; i++) {
                         lettersToShow[i].classList.add("correct");
                     }
 
                     /* check to see if letter appears multiple times */
-                    for (var j = 0; j < currentWord.length; j++) {
+                    for ( j = 0; j < currentWord.length; j++) {
                         if (currentWord.charAt(j) === guess) {
                             numLettersMatched += 1;
                         }
@@ -136,7 +146,7 @@
                     lettersGuessed += guess;
                     lives--;
                     life.innerHTML = "You have " + lives + " lives remaining";
-                    already.innerHTML = "You guessed " + lettersMatched + lettersGuessed;
+                    already.innerHTML = "You guessed : " + lettersMatched.toUpperCase() + lettersGuessed.toUpperCase();
                     if (lives === 0) gameOver(false);
                 }
             }
