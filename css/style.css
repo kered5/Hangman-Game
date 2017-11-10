@@ -1,0 +1,41 @@
+
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: sans-serif;
+    background-image: url("../images/rp1-columbus.jpg");
+
+}
+p{
+    padding:5px;
+}
+
+#logo{
+    margin-left: 35%;
+    height: 300px;
+    width :350px;
+
+}
+
+#gameout{
+
+    font-family: 'Allerta Stencil';font-size: 22px;
+    color: white;
+}
+
+#header{
+    font-family: 'Allerta Stencil';font-size: 29px;
+    color: white;
+    padding:10px;
+}
+#maingame{
+    background-color: slategrey;
+    width: 400px;
+    padding:20px;
+    margin-left: 33%;
+    opacity:0.8;
+
+}
+
+

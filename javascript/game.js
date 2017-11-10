@@ -67,7 +67,6 @@ function startgame(){
       var userGuess = event.key;
       var code = event.keyCode;
 
-document.getElementById("game").innerHTML = "<h1 id='header'>"+"Keep guessing"+"</h1>";
 //Check if user input is an actual letter
       if (code > 64 && code < 91) {
 
