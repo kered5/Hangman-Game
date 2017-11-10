@@ -40,8 +40,9 @@ function startgame(){
         solution.push("_ ");
 
        }
+       joined = solution.join(" ");
 
- document.getElementById("classmate").textContent = solution;
+ document.getElementById("classmate").textContent = joined;
  document.getElementById("lives").textContent = lives;
 
  function gameOver(win){
@@ -97,7 +98,9 @@ document.getElementById("game").innerHTML = "<h1 id='header'>"+"Keep guessing"+"
 
                 }
                 //solution[match]= userGuess;
-                document.getElementById("classmate").textContent = solution;
+
+                joined = solution.join(" ");
+                document.getElementById("classmate").textContent = joined;
 
                 //Check to see if letter appears more than once
                 }
