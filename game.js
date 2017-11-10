@@ -14,6 +14,7 @@
    var matches =0;
    var wins=0;
    var mysterymate;
+   var joined;
 
    startgame();
 
